@@ -14,7 +14,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Cargo;
+import frc.robot.subsystems.BallGrip;
+import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Hatch;
+import frc.robot.subsystems.HatchGrip;
+import frc.robot.subsystems.Tower;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.RobotMap;
 
@@ -29,8 +33,16 @@ import edu.wpi.cscore.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Cargo m_cargo;
+  // PCM Solenoid controlled subsystems
+  public static Lift lift;
   public static Hatch m_hatch;
+  public static HatchGrip hatchGrip;
+
+  // PWM controlled subsystems
+  public static Tower tower;
+  public static BallGrip ballGrip;
+  public static Cargo m_cargo;
+  
   public static ExampleSubsystem m_subsystem;
 
   //You have to call the OI last or else stuff won't work
@@ -47,9 +59,16 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     RobotMap.init();
 
-    m_cargo = new Cargo();
-    m_subsystem = new ExampleSubsystem();
+    lift = new Lift();
+    m_hatch = new Hatch();
+    hatchGrip = new HatchGrip();
 
+    tower = new Tower();
+    ballGrip = new BallGrip();
+    m_cargo = new Cargo();
+
+
+    m_subsystem = new ExampleSubsystem();
     m_oi = new OI();
 
     m_subsystem.init();

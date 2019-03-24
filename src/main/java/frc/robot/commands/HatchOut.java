@@ -26,7 +26,7 @@ public class HatchOut extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_hatch.setTriggerSolenoidHatch(Value.kReverse);
+    Robot.m_hatch.hatchOut();  // setTriggerSolenoidHatch(Value.kReverse);
     setTimeout(0.1);
   }
 

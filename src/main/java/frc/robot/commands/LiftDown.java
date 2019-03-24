@@ -13,11 +13,11 @@ import frc.robot.Robot;
 
 
 
-public class HatchIn extends Command {
-  public HatchIn() {
+public class LiftDown extends Command {
+  public LiftDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_hatch);
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -28,7 +28,7 @@ public class HatchIn extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_hatch.hatchIn();// setTriggerSolenoidHatch(Value.kForward);
+    Robot.lift.liftDown();// setTriggerSolenoidHatch(Value.kForward);
     setTimeout(0.1);
   }
 
@@ -41,7 +41,7 @@ public class HatchIn extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_hatch.setTriggerSolenoidHatch(Value.kOff);
+    Robot.lift.setTriggerSolenoidLift(Value.kOff);
   }
 
   // Called when another command which requires one or more of the same

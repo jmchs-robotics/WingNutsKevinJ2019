@@ -1,3 +1,4 @@
+
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -13,11 +14,11 @@ import frc.robot.Robot;
 
 
 
-public class HatchIn extends Command {
-  public HatchIn() {
+public class HatchGripOn extends Command {
+  public HatchGripOn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_hatch);
+    requires(Robot.hatchGrip);
   }
 
   // Called just before this Command runs the first time
@@ -28,7 +29,7 @@ public class HatchIn extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_hatch.hatchIn();// setTriggerSolenoidHatch(Value.kForward);
+    Robot.hatchGrip.hatchGripOn();// setTriggerSolenoidHatch(Value.kForward);
     setTimeout(0.1);
   }
 
@@ -41,7 +42,7 @@ public class HatchIn extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_hatch.setTriggerSolenoidHatch(Value.kOff);
+    Robot.hatchGrip.setTriggerSolenoidHatchGrip(Value.kOff);
   }
 
   // Called when another command which requires one or more of the same

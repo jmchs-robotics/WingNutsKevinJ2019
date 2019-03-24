@@ -51,28 +51,71 @@ public class OI {
 
   //Joystick buttons for the Co-Driver
   //The number refers to the number given by driver station as button IDs
-  public static JoystickButton score4;
-  public static JoystickButton score3;
-
+  // Lift (PCM 0 and 1)
+  public static JoystickButton score6; // Lift Up
+  public static JoystickButton score7; // Lift Down
+  // Hatch (PCM 2 and 3)
+  public static JoystickButton score8; // Hatch Out
+  public static JoystickButton score9; // Hatch In
+  // Hatch Grip (PCM 4 and 5)
+  public static JoystickButton score10; // Grip On
+  public static JoystickButton score11; // Grip Off
+  
+  // Ball Grip (Jaguar 2)
+  public static JoystickButton score5; // Ball Grip Up
+  public static JoystickButton score2; // Ball Grip Down
+// Ball Intake / Discharge (Spike or Jaguar 3)
+  public static JoystickButton score3; // Intake
+  public static JoystickButton score4; // Discharge
+  
   public OI(){
     driverStick = new Joystick(0);
     scoreStick = new Joystick(1);
 
-    score3 = new JoystickButton(scoreStick, 3);
-    score3.whileHeld(new BallIntake());
+    // Lift Up/Down
+    score6 = new JoystickButton(scoreStick, 6); // Up
+    score6.whenPressed(new LiftUp());
+    score7 = new JoystickButton(scoreStick, 7); // Down
+    score7.whenPressed(new LiftDown());
 
-    score4 = new JoystickButton(scoreStick, 4);
+    // Hatch Out / In
+    score8 = new JoystickButton(scoreStick, 8); // Out
+    score8.whenPressed(new HatchOut());
+    score9 = new JoystickButton(scoreStick, 9); // In
+    score9.whenPressed(new HatchIn());
+  
+    // Hatch Grip On/Off
+    score10 = new JoystickButton(scoreStick, 10); // On
+    score10.whenPressed(new HatchGripOn());
+    score11 = new JoystickButton(scoreStick, 11); // Off
+    score11.whenPressed(new HatchGripOff());
+
+    // Ball Grip (Jaguar 2, PWM 2)
+    score5 = new JoystickButton(scoreStick, 5); // Up
+    score5.whileHeld(new BallGripUp());
+    score2 = new JoystickButton(scoreStick, 2); // Down
+    score2.whileHeld(new BallGripDown());
+
+    // Ball Intake / discharge (Jaguar 3, PWM 3)
+    score3 = new JoystickButton(scoreStick, 3); // Intake
+    score3.whileHeld(new BallIntake());
+    score4 = new JoystickButton(scoreStick, 4); // Discharge
     score4.whileHeld(new BallDischarge());
   }
 
 
   /**
    * @return the driverStick
+   * e.g. for drivetrain control, in ExampleCommand 
    */
   public Joystick getDriverStick() {
     return driverStick;
   }
-  public Joystick getscoreStick() {
+  /** 
+   * @return secondary / Scor joystick
+   * for Tower up/down control, in TowerDefaultCommand
+   */
+  public Joystick getScoreStick() {
     return scoreStick;
   }
 }

@@ -7,17 +7,15 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.Cargo;
 
-
-
-public class HatchIn extends Command {
-  public HatchIn() {
+public class BallGripUp extends Command {
+  public BallGripUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_hatch);
+    requires(Robot.ballGrip);
   }
 
   // Called just before this Command runs the first time
@@ -28,20 +26,19 @@ public class HatchIn extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_hatch.hatchIn();// setTriggerSolenoidHatch(Value.kForward);
-    setTimeout(0.1);
+    Robot.ballGrip.ballGripUp();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isTimedOut();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_hatch.setTriggerSolenoidHatch(Value.kOff);
+    Robot.ballGrip.stop();
   }
 
   // Called when another command which requires one or more of the same
