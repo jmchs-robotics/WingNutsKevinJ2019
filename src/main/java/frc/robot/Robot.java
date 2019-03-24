@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Cargo;
+import frc.robot.subsystems.Hatch;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.RobotMap;
 
@@ -29,6 +30,7 @@ import edu.wpi.cscore.*;
  */
 public class Robot extends TimedRobot {
   public static Cargo m_cargo;
+  public static Hatch m_hatch;
   public static ExampleSubsystem m_subsystem;
 
   //You have to call the OI last or else stuff won't work
